@@ -10,7 +10,7 @@ export var racemate;
         #one_of_decls = [];
         constructor(data) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 4, 5, 6, 7, 8, 18], this.#one_of_decls);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [18], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sm_version" in data && data.sm_version != undefined) {
                     this.sm_version = data.sm_version;
@@ -69,13 +69,13 @@ export var racemate;
             }
         }
         get sm_version() {
-            return pb_1.Message.getFieldWithDefault(this, 1, []);
+            return pb_1.Message.getFieldWithDefault(this, 1, "");
         }
         set sm_version(value) {
             pb_1.Message.setField(this, 1, value);
         }
         get ac_version() {
-            return pb_1.Message.getFieldWithDefault(this, 2, []);
+            return pb_1.Message.getFieldWithDefault(this, 2, "");
         }
         set ac_version(value) {
             pb_1.Message.setField(this, 2, value);
@@ -87,31 +87,31 @@ export var racemate;
             pb_1.Message.setField(this, 3, value);
         }
         get car_model() {
-            return pb_1.Message.getFieldWithDefault(this, 4, []);
+            return pb_1.Message.getFieldWithDefault(this, 4, "");
         }
         set car_model(value) {
             pb_1.Message.setField(this, 4, value);
         }
         get track() {
-            return pb_1.Message.getFieldWithDefault(this, 5, []);
+            return pb_1.Message.getFieldWithDefault(this, 5, "");
         }
         set track(value) {
             pb_1.Message.setField(this, 5, value);
         }
         get player_name() {
-            return pb_1.Message.getFieldWithDefault(this, 6, []);
+            return pb_1.Message.getFieldWithDefault(this, 6, "");
         }
         set player_name(value) {
             pb_1.Message.setField(this, 6, value);
         }
         get player_nick() {
-            return pb_1.Message.getFieldWithDefault(this, 7, []);
+            return pb_1.Message.getFieldWithDefault(this, 7, "");
         }
         set player_nick(value) {
             pb_1.Message.setField(this, 7, value);
         }
         get player_surname() {
-            return pb_1.Message.getFieldWithDefault(this, 8, []);
+            return pb_1.Message.getFieldWithDefault(this, 8, "");
         }
         set player_surname(value) {
             pb_1.Message.setField(this, 8, value);
@@ -295,21 +295,21 @@ export var racemate;
         serialize(w) {
             const writer = w || new pb_1.BinaryWriter();
             if (this.sm_version.length)
-                writer.writePackedUint32(1, this.sm_version);
+                writer.writeString(1, this.sm_version);
             if (this.ac_version.length)
-                writer.writePackedUint32(2, this.ac_version);
+                writer.writeString(2, this.ac_version);
             if (this.number_of_sessions != 0)
                 writer.writeInt32(3, this.number_of_sessions);
             if (this.car_model.length)
-                writer.writePackedUint32(4, this.car_model);
+                writer.writeString(4, this.car_model);
             if (this.track.length)
-                writer.writePackedUint32(5, this.track);
+                writer.writeString(5, this.track);
             if (this.player_name.length)
-                writer.writePackedUint32(6, this.player_name);
+                writer.writeString(6, this.player_name);
             if (this.player_nick.length)
-                writer.writePackedUint32(7, this.player_nick);
+                writer.writeString(7, this.player_nick);
             if (this.player_surname.length)
-                writer.writePackedUint32(8, this.player_surname);
+                writer.writeString(8, this.player_surname);
             if (this.air_temp != 0)
                 writer.writeFloat(9, this.air_temp);
             if (this.road_temp != 0)
@@ -340,28 +340,28 @@ export var racemate;
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.sm_version = reader.readPackedUint32();
+                        message.sm_version = reader.readString();
                         break;
                     case 2:
-                        message.ac_version = reader.readPackedUint32();
+                        message.ac_version = reader.readString();
                         break;
                     case 3:
                         message.number_of_sessions = reader.readInt32();
                         break;
                     case 4:
-                        message.car_model = reader.readPackedUint32();
+                        message.car_model = reader.readString();
                         break;
                     case 5:
-                        message.track = reader.readPackedUint32();
+                        message.track = reader.readString();
                         break;
                     case 6:
-                        message.player_name = reader.readPackedUint32();
+                        message.player_name = reader.readString();
                         break;
                     case 7:
-                        message.player_nick = reader.readPackedUint32();
+                        message.player_nick = reader.readString();
                         break;
                     case 8:
-                        message.player_surname = reader.readPackedUint32();
+                        message.player_surname = reader.readString();
                         break;
                     case 9:
                         message.air_temp = reader.readFloat();
@@ -410,7 +410,7 @@ export var racemate;
         #one_of_decls = [];
         constructor(data) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], this.#one_of_decls);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("graphic_packet" in data && data.graphic_packet != undefined) {
                     this.graphic_packet = data.graphic_packet;
@@ -442,8 +442,14 @@ export var racemate;
                 if ("normalized_car_position" in data && data.normalized_car_position != undefined) {
                     this.normalized_car_position = data.normalized_car_position;
                 }
-                if ("car_coordinates" in data && data.car_coordinates != undefined) {
-                    this.car_coordinates = data.car_coordinates;
+                if ("car_coordinate_x" in data && data.car_coordinate_x != undefined) {
+                    this.car_coordinate_x = data.car_coordinate_x;
+                }
+                if ("car_coordinate_y" in data && data.car_coordinate_y != undefined) {
+                    this.car_coordinate_y = data.car_coordinate_y;
+                }
+                if ("car_coordinate_z" in data && data.car_coordinate_z != undefined) {
+                    this.car_coordinate_z = data.car_coordinate_z;
                 }
                 if ("is_valid_lap" in data && data.is_valid_lap != undefined) {
                     this.is_valid_lap = data.is_valid_lap;
@@ -510,17 +516,29 @@ export var racemate;
         set normalized_car_position(value) {
             pb_1.Message.setField(this, 10, value);
         }
-        get car_coordinates() {
-            return pb_1.Message.getFieldWithDefault(this, 11, []);
+        get car_coordinate_x() {
+            return pb_1.Message.getFieldWithDefault(this, 11, 0);
         }
-        set car_coordinates(value) {
+        set car_coordinate_x(value) {
             pb_1.Message.setField(this, 11, value);
         }
-        get is_valid_lap() {
+        get car_coordinate_y() {
             return pb_1.Message.getFieldWithDefault(this, 12, 0);
         }
-        set is_valid_lap(value) {
+        set car_coordinate_y(value) {
             pb_1.Message.setField(this, 12, value);
+        }
+        get car_coordinate_z() {
+            return pb_1.Message.getFieldWithDefault(this, 13, 0);
+        }
+        set car_coordinate_z(value) {
+            pb_1.Message.setField(this, 13, value);
+        }
+        get is_valid_lap() {
+            return pb_1.Message.getFieldWithDefault(this, 14, 0);
+        }
+        set is_valid_lap(value) {
+            pb_1.Message.setField(this, 14, value);
         }
         static fromObject(data) {
             const message = new Frame({});
@@ -554,8 +572,14 @@ export var racemate;
             if (data.normalized_car_position != null) {
                 message.normalized_car_position = data.normalized_car_position;
             }
-            if (data.car_coordinates != null) {
-                message.car_coordinates = data.car_coordinates;
+            if (data.car_coordinate_x != null) {
+                message.car_coordinate_x = data.car_coordinate_x;
+            }
+            if (data.car_coordinate_y != null) {
+                message.car_coordinate_y = data.car_coordinate_y;
+            }
+            if (data.car_coordinate_z != null) {
+                message.car_coordinate_z = data.car_coordinate_z;
             }
             if (data.is_valid_lap != null) {
                 message.is_valid_lap = data.is_valid_lap;
@@ -594,8 +618,14 @@ export var racemate;
             if (this.normalized_car_position != null) {
                 data.normalized_car_position = this.normalized_car_position;
             }
-            if (this.car_coordinates != null) {
-                data.car_coordinates = this.car_coordinates;
+            if (this.car_coordinate_x != null) {
+                data.car_coordinate_x = this.car_coordinate_x;
+            }
+            if (this.car_coordinate_y != null) {
+                data.car_coordinate_y = this.car_coordinate_y;
+            }
+            if (this.car_coordinate_z != null) {
+                data.car_coordinate_z = this.car_coordinate_z;
             }
             if (this.is_valid_lap != null) {
                 data.is_valid_lap = this.is_valid_lap;
@@ -624,10 +654,14 @@ export var racemate;
                 writer.writeInt32(9, this.current_time);
             if (this.normalized_car_position != 0)
                 writer.writeFloat(10, this.normalized_car_position);
-            if (this.car_coordinates.length)
-                writer.writePackedFloat(11, this.car_coordinates);
+            if (this.car_coordinate_x != 0)
+                writer.writeFloat(11, this.car_coordinate_x);
+            if (this.car_coordinate_y != 0)
+                writer.writeFloat(12, this.car_coordinate_y);
+            if (this.car_coordinate_z != 0)
+                writer.writeFloat(13, this.car_coordinate_z);
             if (this.is_valid_lap != 0)
-                writer.writeInt32(12, this.is_valid_lap);
+                writer.writeInt32(14, this.is_valid_lap);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -668,9 +702,15 @@ export var racemate;
                         message.normalized_car_position = reader.readFloat();
                         break;
                     case 11:
-                        message.car_coordinates = reader.readPackedFloat();
+                        message.car_coordinate_x = reader.readFloat();
                         break;
                     case 12:
+                        message.car_coordinate_y = reader.readFloat();
+                        break;
+                    case 13:
+                        message.car_coordinate_z = reader.readFloat();
+                        break;
+                    case 14:
                         message.is_valid_lap = reader.readInt32();
                         break;
                     default: reader.skipField();
