@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package racemate;
+
+option go_package = "./message";
+
+message Lap {
+  repeated uint32 sm_version = 1 [packed = true]; // Changed to repeated for variable length if needed
+  repeated uint32 ac_version = 2 [packed = true]; // Changed to repeated for variable length if needed
+  int32 number_of_sessions = 3;
+  repeated uint32 car_model = 4 [packed = true]; // Changed to repeated for variable length if needed
+  repeated uint32 track = 5 [packed = true]; // Changed to repeated for variable length if needed
+  repeated uint32 player_name = 6 [packed = true]; // Changed to repeated for variable length if needed
+  repeated uint32 player_nick = 7 [packed = true]; // Changed to repeated for variable length if needed
+  repeated uint32 player_surname = 8 [packed = true]; // Changed to repeated for variable length if needed
+  float air_temp = 9;
+  float road_temp = 10;
+  int32 session_type = 11;
+  int32 rain_tyres = 12;
+  int32 is_valid_lap = 13;
+  int32 track_grip_status = 14;
+  int32 rain_intensity = 15;
+  int32 session_index = 16;
+  int32 lap_time_ms = 17;
+  repeated Frame frames = 18;
+}
+
+message Frame {
+  int32 graphic_packet = 1;
+  int32 physics_packet = 2;
+  float gas = 3;
+  float brake = 4;
+  int32 gear = 5;
+  int32 rpm = 6;
+  float steer_angle = 7;
+  float speed_kmh = 8;
+  int32 current_time = 9;
+  float normalized_car_position = 10;
+  repeated float car_coordinates = 11 [packed = true]; // Changed to repeated for 3 coordinates
+  int32 is_valid_lap = 12;
+}

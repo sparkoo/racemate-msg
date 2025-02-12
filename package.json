@@ -1,0 +1,22 @@
+{
+  "name": "racemate-msg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "proto/lap.ts",
+  "types": "proto/lap.d.ts",
+  "files": [
+    "proto/lap.d.ts",
+    "proto/lap.ts",
+    "proto/lap.proto"
+  ],
+  "keywords": [],
+  "author": "sparkoo",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/google-protobuf": "^3.15.12",
+    "google-protobuf": "^3.21.4",
+    "protoc-gen-ts": "^0.8.7",
+    "typescript": "^5.7.3"
+  }
+}
