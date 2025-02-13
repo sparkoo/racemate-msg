@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "module": "esnext", // Or "node16", "nodenext"
+    "module": "nodenext", // Or "node16", "nodenext"
     "target": "esnext", // Or a target that supports ESM
-    "moduleResolution": "node", // Or "node16", "nodenext" (important for Node.js ESM)
+    "moduleResolution": "nodenext", // Or "node16", "nodenext" (important for Node.js ESM)
     "declaration": true
   },
   "include": [
-    "proto/*.ts", // Or src/**/*.js if protoc-gen-ts outputs JavaScript
-    "proto/*.proto" // Include proto files to be compiled
+    "dist/*.ts", // Or src/**/*.js if protoc-gen-ts outputs JavaScript
+    "*.proto" // Include proto files to be compiled
   ]
 }

@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-
 package racemate;
 
 option go_package = "./message";
@@ -25,7 +23,7 @@ message Lap {
   int32 session_index = 16;
   int32 lap_time_ms = 17;
   repeated Frame frames = 18;
-  google.protobuf.Timestamp timestamp = 19;
+  uint64 timestamp = 19;
 }
 
 message Frame {
