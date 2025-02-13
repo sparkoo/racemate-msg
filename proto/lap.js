@@ -3,6 +3,7 @@
  * compiler version: 5.28.3
  * source: proto/lap.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
+import * as dependency_1 from "./..\\google\\protobuf\\timestamp";
 import * as pb_1 from "google-protobuf";
 export var racemate;
 (function (racemate) {
@@ -65,6 +66,9 @@ export var racemate;
                 }
                 if ("frames" in data && data.frames != undefined) {
                     this.frames = data.frames;
+                }
+                if ("timestamp" in data && data.timestamp != undefined) {
+                    this.timestamp = data.timestamp;
                 }
             }
         }
@@ -176,6 +180,15 @@ export var racemate;
         set frames(value) {
             pb_1.Message.setRepeatedWrapperField(this, 18, value);
         }
+        get timestamp() {
+            return pb_1.Message.getWrapperField(this, dependency_1.google.protobuf.Timestamp, 19);
+        }
+        set timestamp(value) {
+            pb_1.Message.setWrapperField(this, 19, value);
+        }
+        get has_timestamp() {
+            return pb_1.Message.getField(this, 19) != null;
+        }
         static fromObject(data) {
             const message = new Lap({});
             if (data.sm_version != null) {
@@ -231,6 +244,9 @@ export var racemate;
             }
             if (data.frames != null) {
                 message.frames = data.frames.map(item => Frame.fromObject(item));
+            }
+            if (data.timestamp != null) {
+                message.timestamp = dependency_1.google.protobuf.Timestamp.fromObject(data.timestamp);
             }
             return message;
         }
@@ -290,6 +306,9 @@ export var racemate;
             if (this.frames != null) {
                 data.frames = this.frames.map((item) => item.toObject());
             }
+            if (this.timestamp != null) {
+                data.timestamp = this.timestamp.toObject();
+            }
             return data;
         }
         serialize(w) {
@@ -330,6 +349,8 @@ export var racemate;
                 writer.writeInt32(17, this.lap_time_ms);
             if (this.frames.length)
                 writer.writeRepeatedMessage(18, this.frames, (item) => item.serialize(writer));
+            if (this.has_timestamp)
+                writer.writeMessage(19, this.timestamp, () => this.timestamp.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -392,6 +413,9 @@ export var racemate;
                         break;
                     case 18:
                         reader.readMessage(message.frames, () => pb_1.Message.addToRepeatedWrapperField(message, 18, Frame.deserialize(reader), Frame));
+                        break;
+                    case 19:
+                        reader.readMessage(message.timestamp, () => message.timestamp = dependency_1.google.protobuf.Timestamp.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }

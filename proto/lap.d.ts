@@ -3,6 +3,7 @@
  * compiler version: 5.28.3
  * source: proto/lap.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
+import * as dependency_1 from "./..\\google\\protobuf\\timestamp";
 import * as pb_1 from "google-protobuf";
 export declare namespace racemate {
     class Lap extends pb_1.Message {
@@ -26,6 +27,7 @@ export declare namespace racemate {
             session_index?: number;
             lap_time_ms?: number;
             frames?: Frame[];
+            timestamp?: dependency_1.google.protobuf.Timestamp;
         });
         get sm_version(): string;
         set sm_version(value: string);
@@ -63,6 +65,9 @@ export declare namespace racemate {
         set lap_time_ms(value: number);
         get frames(): Frame[];
         set frames(value: Frame[]);
+        get timestamp(): dependency_1.google.protobuf.Timestamp;
+        set timestamp(value: dependency_1.google.protobuf.Timestamp);
+        get has_timestamp(): boolean;
         static fromObject(data: {
             sm_version?: string;
             ac_version?: string;
@@ -82,6 +87,7 @@ export declare namespace racemate {
             session_index?: number;
             lap_time_ms?: number;
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
+            timestamp?: ReturnType<typeof dependency_1.google.protobuf.Timestamp.prototype.toObject>;
         }): Lap;
         toObject(): {
             sm_version?: string;
@@ -102,6 +108,7 @@ export declare namespace racemate {
             session_index?: number;
             lap_time_ms?: number;
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
+            timestamp?: ReturnType<typeof dependency_1.google.protobuf.Timestamp.prototype.toObject>;
         };
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
