@@ -1,6 +1,6 @@
 {
   "name": "racemate-msg",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "",
   "main": "dist/lap.js",
   "types": "dist/lap.d.ts",
