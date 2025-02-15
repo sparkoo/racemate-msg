@@ -69,6 +69,9 @@ export var racemate;
                 if ("timestamp" in data && data.timestamp != undefined) {
                     this.timestamp = data.timestamp;
                 }
+                if ("lap_number" in data && data.lap_number != undefined) {
+                    this.lap_number = data.lap_number;
+                }
             }
         }
         get sm_version() {
@@ -185,6 +188,12 @@ export var racemate;
         set timestamp(value) {
             pb_1.Message.setField(this, 19, value);
         }
+        get lap_number() {
+            return pb_1.Message.getFieldWithDefault(this, 20, 0);
+        }
+        set lap_number(value) {
+            pb_1.Message.setField(this, 20, value);
+        }
         static fromObject(data) {
             const message = new Lap({});
             if (data.sm_version != null) {
@@ -243,6 +252,9 @@ export var racemate;
             }
             if (data.timestamp != null) {
                 message.timestamp = data.timestamp;
+            }
+            if (data.lap_number != null) {
+                message.lap_number = data.lap_number;
             }
             return message;
         }
@@ -305,6 +317,9 @@ export var racemate;
             if (this.timestamp != null) {
                 data.timestamp = this.timestamp;
             }
+            if (this.lap_number != null) {
+                data.lap_number = this.lap_number;
+            }
             return data;
         }
         serialize(w) {
@@ -347,6 +362,8 @@ export var racemate;
                 writer.writeRepeatedMessage(18, this.frames, (item) => item.serialize(writer));
             if (this.timestamp != 0)
                 writer.writeUint64(19, this.timestamp);
+            if (this.lap_number != 0)
+                writer.writeInt32(20, this.lap_number);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -412,6 +429,9 @@ export var racemate;
                         break;
                     case 19:
                         message.timestamp = reader.readUint64();
+                        break;
+                    case 20:
+                        message.lap_number = reader.readInt32();
                         break;
                     default: reader.skipField();
                 }

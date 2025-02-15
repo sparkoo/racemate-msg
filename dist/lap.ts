@@ -27,6 +27,7 @@ export namespace racemate {
             lap_time_ms?: number;
             frames?: Frame[];
             timestamp?: number;
+            lap_number?: number;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [18], this.#one_of_decls);
@@ -87,6 +88,9 @@ export namespace racemate {
                 }
                 if ("timestamp" in data && data.timestamp != undefined) {
                     this.timestamp = data.timestamp;
+                }
+                if ("lap_number" in data && data.lap_number != undefined) {
+                    this.lap_number = data.lap_number;
                 }
             }
         }
@@ -204,6 +208,12 @@ export namespace racemate {
         set timestamp(value: number) {
             pb_1.Message.setField(this, 19, value);
         }
+        get lap_number() {
+            return pb_1.Message.getFieldWithDefault(this, 20, 0) as number;
+        }
+        set lap_number(value: number) {
+            pb_1.Message.setField(this, 20, value);
+        }
         static fromObject(data: {
             sm_version?: string;
             ac_version?: string;
@@ -224,6 +234,7 @@ export namespace racemate {
             lap_time_ms?: number;
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
             timestamp?: number;
+            lap_number?: number;
         }): Lap {
             const message = new Lap({});
             if (data.sm_version != null) {
@@ -283,6 +294,9 @@ export namespace racemate {
             if (data.timestamp != null) {
                 message.timestamp = data.timestamp;
             }
+            if (data.lap_number != null) {
+                message.lap_number = data.lap_number;
+            }
             return message;
         }
         toObject() {
@@ -306,6 +320,7 @@ export namespace racemate {
                 lap_time_ms?: number;
                 frames?: ReturnType<typeof Frame.prototype.toObject>[];
                 timestamp?: number;
+                lap_number?: number;
             } = {};
             if (this.sm_version != null) {
                 data.sm_version = this.sm_version;
@@ -364,6 +379,9 @@ export namespace racemate {
             if (this.timestamp != null) {
                 data.timestamp = this.timestamp;
             }
+            if (this.lap_number != null) {
+                data.lap_number = this.lap_number;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -408,6 +426,8 @@ export namespace racemate {
                 writer.writeRepeatedMessage(18, this.frames, (item: Frame) => item.serialize(writer));
             if (this.timestamp != 0)
                 writer.writeUint64(19, this.timestamp);
+            if (this.lap_number != 0)
+                writer.writeInt32(20, this.lap_number);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -473,6 +493,9 @@ export namespace racemate {
                         break;
                     case 19:
                         message.timestamp = reader.readUint64();
+                        break;
+                    case 20:
+                        message.lap_number = reader.readInt32();
                         break;
                     default: reader.skipField();
                 }

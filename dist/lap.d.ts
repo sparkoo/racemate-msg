@@ -27,6 +27,7 @@ export declare namespace racemate {
             lap_time_ms?: number;
             frames?: Frame[];
             timestamp?: number;
+            lap_number?: number;
         });
         get sm_version(): string;
         set sm_version(value: string);
@@ -66,6 +67,8 @@ export declare namespace racemate {
         set frames(value: Frame[]);
         get timestamp(): number;
         set timestamp(value: number);
+        get lap_number(): number;
+        set lap_number(value: number);
         static fromObject(data: {
             sm_version?: string;
             ac_version?: string;
@@ -86,6 +89,7 @@ export declare namespace racemate {
             lap_time_ms?: number;
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
             timestamp?: number;
+            lap_number?: number;
         }): Lap;
         toObject(): {
             sm_version?: string;
@@ -107,6 +111,7 @@ export declare namespace racemate {
             lap_time_ms?: number;
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
             timestamp?: number;
+            lap_number?: number;
         };
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;

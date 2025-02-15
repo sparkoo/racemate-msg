@@ -24,6 +24,7 @@ message Lap {
   int32 lap_time_ms = 17;
   repeated Frame frames = 18;
   uint64 timestamp = 19;
+  int32 lap_number = 20;
 }
 
 message Frame {
