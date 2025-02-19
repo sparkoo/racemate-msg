@@ -25,6 +25,7 @@ message Lap {
   repeated Frame frames = 18;
   uint64 timestamp = 19;
   int32 lap_number = 20;
+  int32 penalty_type = 21;
 }
 
 message Frame {
@@ -42,4 +43,5 @@ message Frame {
   float car_coordinate_y = 12;
   float car_coordinate_z = 13;
   int32 is_valid_lap = 14;
+  int32 penalty_type = 15;
 }

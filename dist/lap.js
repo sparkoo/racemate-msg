@@ -72,6 +72,9 @@ export var racemate;
                 if ("lap_number" in data && data.lap_number != undefined) {
                     this.lap_number = data.lap_number;
                 }
+                if ("penalty_type" in data && data.penalty_type != undefined) {
+                    this.penalty_type = data.penalty_type;
+                }
             }
         }
         get sm_version() {
@@ -194,6 +197,12 @@ export var racemate;
         set lap_number(value) {
             pb_1.Message.setField(this, 20, value);
         }
+        get penalty_type() {
+            return pb_1.Message.getFieldWithDefault(this, 21, 0);
+        }
+        set penalty_type(value) {
+            pb_1.Message.setField(this, 21, value);
+        }
         static fromObject(data) {
             const message = new Lap({});
             if (data.sm_version != null) {
@@ -255,6 +264,9 @@ export var racemate;
             }
             if (data.lap_number != null) {
                 message.lap_number = data.lap_number;
+            }
+            if (data.penalty_type != null) {
+                message.penalty_type = data.penalty_type;
             }
             return message;
         }
@@ -320,6 +332,9 @@ export var racemate;
             if (this.lap_number != null) {
                 data.lap_number = this.lap_number;
             }
+            if (this.penalty_type != null) {
+                data.penalty_type = this.penalty_type;
+            }
             return data;
         }
         serialize(w) {
@@ -364,6 +379,8 @@ export var racemate;
                 writer.writeUint64(19, this.timestamp);
             if (this.lap_number != 0)
                 writer.writeInt32(20, this.lap_number);
+            if (this.penalty_type != 0)
+                writer.writeInt32(21, this.penalty_type);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -433,6 +450,9 @@ export var racemate;
                     case 20:
                         message.lap_number = reader.readInt32();
                         break;
+                    case 21:
+                        message.penalty_type = reader.readInt32();
+                        break;
                     default: reader.skipField();
                 }
             }
@@ -493,6 +513,9 @@ export var racemate;
                 }
                 if ("is_valid_lap" in data && data.is_valid_lap != undefined) {
                     this.is_valid_lap = data.is_valid_lap;
+                }
+                if ("penalty_type" in data && data.penalty_type != undefined) {
+                    this.penalty_type = data.penalty_type;
                 }
             }
         }
@@ -580,6 +603,12 @@ export var racemate;
         set is_valid_lap(value) {
             pb_1.Message.setField(this, 14, value);
         }
+        get penalty_type() {
+            return pb_1.Message.getFieldWithDefault(this, 15, 0);
+        }
+        set penalty_type(value) {
+            pb_1.Message.setField(this, 15, value);
+        }
         static fromObject(data) {
             const message = new Frame({});
             if (data.graphic_packet != null) {
@@ -623,6 +652,9 @@ export var racemate;
             }
             if (data.is_valid_lap != null) {
                 message.is_valid_lap = data.is_valid_lap;
+            }
+            if (data.penalty_type != null) {
+                message.penalty_type = data.penalty_type;
             }
             return message;
         }
@@ -670,6 +702,9 @@ export var racemate;
             if (this.is_valid_lap != null) {
                 data.is_valid_lap = this.is_valid_lap;
             }
+            if (this.penalty_type != null) {
+                data.penalty_type = this.penalty_type;
+            }
             return data;
         }
         serialize(w) {
@@ -702,6 +737,8 @@ export var racemate;
                 writer.writeFloat(13, this.car_coordinate_z);
             if (this.is_valid_lap != 0)
                 writer.writeInt32(14, this.is_valid_lap);
+            if (this.penalty_type != 0)
+                writer.writeInt32(15, this.penalty_type);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -752,6 +789,9 @@ export var racemate;
                         break;
                     case 14:
                         message.is_valid_lap = reader.readInt32();
+                        break;
+                    case 15:
+                        message.penalty_type = reader.readInt32();
                         break;
                     default: reader.skipField();
                 }

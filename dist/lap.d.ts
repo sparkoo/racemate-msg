@@ -28,6 +28,7 @@ export declare namespace racemate {
             frames?: Frame[];
             timestamp?: number;
             lap_number?: number;
+            penalty_type?: number;
         });
         get sm_version(): string;
         set sm_version(value: string);
@@ -69,6 +70,8 @@ export declare namespace racemate {
         set timestamp(value: number);
         get lap_number(): number;
         set lap_number(value: number);
+        get penalty_type(): number;
+        set penalty_type(value: number);
         static fromObject(data: {
             sm_version?: string;
             ac_version?: string;
@@ -90,6 +93,7 @@ export declare namespace racemate {
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
             timestamp?: number;
             lap_number?: number;
+            penalty_type?: number;
         }): Lap;
         toObject(): {
             sm_version?: string;
@@ -112,6 +116,7 @@ export declare namespace racemate {
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
             timestamp?: number;
             lap_number?: number;
+            penalty_type?: number;
         };
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
@@ -136,6 +141,7 @@ export declare namespace racemate {
             car_coordinate_y?: number;
             car_coordinate_z?: number;
             is_valid_lap?: number;
+            penalty_type?: number;
         });
         get graphic_packet(): number;
         set graphic_packet(value: number);
@@ -165,6 +171,8 @@ export declare namespace racemate {
         set car_coordinate_z(value: number);
         get is_valid_lap(): number;
         set is_valid_lap(value: number);
+        get penalty_type(): number;
+        set penalty_type(value: number);
         static fromObject(data: {
             graphic_packet?: number;
             physics_packet?: number;
@@ -180,6 +188,7 @@ export declare namespace racemate {
             car_coordinate_y?: number;
             car_coordinate_z?: number;
             is_valid_lap?: number;
+            penalty_type?: number;
         }): Frame;
         toObject(): {
             graphic_packet?: number;
@@ -196,6 +205,7 @@ export declare namespace racemate {
             car_coordinate_y?: number;
             car_coordinate_z?: number;
             is_valid_lap?: number;
+            penalty_type?: number;
         };
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;

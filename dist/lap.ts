@@ -28,6 +28,7 @@ export namespace racemate {
             frames?: Frame[];
             timestamp?: number;
             lap_number?: number;
+            penalty_type?: number;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [18], this.#one_of_decls);
@@ -91,6 +92,9 @@ export namespace racemate {
                 }
                 if ("lap_number" in data && data.lap_number != undefined) {
                     this.lap_number = data.lap_number;
+                }
+                if ("penalty_type" in data && data.penalty_type != undefined) {
+                    this.penalty_type = data.penalty_type;
                 }
             }
         }
@@ -214,6 +218,12 @@ export namespace racemate {
         set lap_number(value: number) {
             pb_1.Message.setField(this, 20, value);
         }
+        get penalty_type() {
+            return pb_1.Message.getFieldWithDefault(this, 21, 0) as number;
+        }
+        set penalty_type(value: number) {
+            pb_1.Message.setField(this, 21, value);
+        }
         static fromObject(data: {
             sm_version?: string;
             ac_version?: string;
@@ -235,6 +245,7 @@ export namespace racemate {
             frames?: ReturnType<typeof Frame.prototype.toObject>[];
             timestamp?: number;
             lap_number?: number;
+            penalty_type?: number;
         }): Lap {
             const message = new Lap({});
             if (data.sm_version != null) {
@@ -297,6 +308,9 @@ export namespace racemate {
             if (data.lap_number != null) {
                 message.lap_number = data.lap_number;
             }
+            if (data.penalty_type != null) {
+                message.penalty_type = data.penalty_type;
+            }
             return message;
         }
         toObject() {
@@ -321,6 +335,7 @@ export namespace racemate {
                 frames?: ReturnType<typeof Frame.prototype.toObject>[];
                 timestamp?: number;
                 lap_number?: number;
+                penalty_type?: number;
             } = {};
             if (this.sm_version != null) {
                 data.sm_version = this.sm_version;
@@ -382,6 +397,9 @@ export namespace racemate {
             if (this.lap_number != null) {
                 data.lap_number = this.lap_number;
             }
+            if (this.penalty_type != null) {
+                data.penalty_type = this.penalty_type;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -428,6 +446,8 @@ export namespace racemate {
                 writer.writeUint64(19, this.timestamp);
             if (this.lap_number != 0)
                 writer.writeInt32(20, this.lap_number);
+            if (this.penalty_type != 0)
+                writer.writeInt32(21, this.penalty_type);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -497,6 +517,9 @@ export namespace racemate {
                     case 20:
                         message.lap_number = reader.readInt32();
                         break;
+                    case 21:
+                        message.penalty_type = reader.readInt32();
+                        break;
                     default: reader.skipField();
                 }
             }
@@ -526,6 +549,7 @@ export namespace racemate {
             car_coordinate_y?: number;
             car_coordinate_z?: number;
             is_valid_lap?: number;
+            penalty_type?: number;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -571,6 +595,9 @@ export namespace racemate {
                 }
                 if ("is_valid_lap" in data && data.is_valid_lap != undefined) {
                     this.is_valid_lap = data.is_valid_lap;
+                }
+                if ("penalty_type" in data && data.penalty_type != undefined) {
+                    this.penalty_type = data.penalty_type;
                 }
             }
         }
@@ -658,6 +685,12 @@ export namespace racemate {
         set is_valid_lap(value: number) {
             pb_1.Message.setField(this, 14, value);
         }
+        get penalty_type() {
+            return pb_1.Message.getFieldWithDefault(this, 15, 0) as number;
+        }
+        set penalty_type(value: number) {
+            pb_1.Message.setField(this, 15, value);
+        }
         static fromObject(data: {
             graphic_packet?: number;
             physics_packet?: number;
@@ -673,6 +706,7 @@ export namespace racemate {
             car_coordinate_y?: number;
             car_coordinate_z?: number;
             is_valid_lap?: number;
+            penalty_type?: number;
         }): Frame {
             const message = new Frame({});
             if (data.graphic_packet != null) {
@@ -717,6 +751,9 @@ export namespace racemate {
             if (data.is_valid_lap != null) {
                 message.is_valid_lap = data.is_valid_lap;
             }
+            if (data.penalty_type != null) {
+                message.penalty_type = data.penalty_type;
+            }
             return message;
         }
         toObject() {
@@ -735,6 +772,7 @@ export namespace racemate {
                 car_coordinate_y?: number;
                 car_coordinate_z?: number;
                 is_valid_lap?: number;
+                penalty_type?: number;
             } = {};
             if (this.graphic_packet != null) {
                 data.graphic_packet = this.graphic_packet;
@@ -778,6 +816,9 @@ export namespace racemate {
             if (this.is_valid_lap != null) {
                 data.is_valid_lap = this.is_valid_lap;
             }
+            if (this.penalty_type != null) {
+                data.penalty_type = this.penalty_type;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -812,6 +853,8 @@ export namespace racemate {
                 writer.writeFloat(13, this.car_coordinate_z);
             if (this.is_valid_lap != 0)
                 writer.writeInt32(14, this.is_valid_lap);
+            if (this.penalty_type != 0)
+                writer.writeInt32(15, this.penalty_type);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -862,6 +905,9 @@ export namespace racemate {
                         break;
                     case 14:
                         message.is_valid_lap = reader.readInt32();
+                        break;
+                    case 15:
+                        message.penalty_type = reader.readInt32();
                         break;
                     default: reader.skipField();
                 }
