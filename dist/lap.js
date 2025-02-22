@@ -75,6 +75,9 @@ export var racemate;
                 if ("penalty_type" in data && data.penalty_type != undefined) {
                     this.penalty_type = data.penalty_type;
                 }
+                if ("car_index" in data && data.car_index != undefined) {
+                    this.car_index = data.car_index;
+                }
             }
         }
         get sm_version() {
@@ -203,6 +206,12 @@ export var racemate;
         set penalty_type(value) {
             pb_1.Message.setField(this, 21, value);
         }
+        get car_index() {
+            return pb_1.Message.getFieldWithDefault(this, 22, 0);
+        }
+        set car_index(value) {
+            pb_1.Message.setField(this, 22, value);
+        }
         static fromObject(data) {
             const message = new Lap({});
             if (data.sm_version != null) {
@@ -267,6 +276,9 @@ export var racemate;
             }
             if (data.penalty_type != null) {
                 message.penalty_type = data.penalty_type;
+            }
+            if (data.car_index != null) {
+                message.car_index = data.car_index;
             }
             return message;
         }
@@ -335,6 +347,9 @@ export var racemate;
             if (this.penalty_type != null) {
                 data.penalty_type = this.penalty_type;
             }
+            if (this.car_index != null) {
+                data.car_index = this.car_index;
+            }
             return data;
         }
         serialize(w) {
@@ -381,6 +396,8 @@ export var racemate;
                 writer.writeInt32(20, this.lap_number);
             if (this.penalty_type != 0)
                 writer.writeInt32(21, this.penalty_type);
+            if (this.car_index != 0)
+                writer.writeInt32(22, this.car_index);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -452,6 +469,9 @@ export var racemate;
                         break;
                     case 21:
                         message.penalty_type = reader.readInt32();
+                        break;
+                    case 22:
+                        message.car_index = reader.readInt32();
                         break;
                     default: reader.skipField();
                 }

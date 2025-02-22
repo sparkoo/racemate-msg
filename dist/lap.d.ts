@@ -29,6 +29,7 @@ export declare namespace racemate {
             timestamp?: number;
             lap_number?: number;
             penalty_type?: number;
+            car_index?: number;
         });
         get sm_version(): string;
         set sm_version(value: string);
@@ -72,6 +73,8 @@ export declare namespace racemate {
         set lap_number(value: number);
         get penalty_type(): number;
         set penalty_type(value: number);
+        get car_index(): number;
+        set car_index(value: number);
         static fromObject(data: {
             sm_version?: string;
             ac_version?: string;
@@ -94,6 +97,7 @@ export declare namespace racemate {
             timestamp?: number;
             lap_number?: number;
             penalty_type?: number;
+            car_index?: number;
         }): Lap;
         toObject(): {
             sm_version?: string;
@@ -117,6 +121,7 @@ export declare namespace racemate {
             timestamp?: number;
             lap_number?: number;
             penalty_type?: number;
+            car_index?: number;
         };
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;

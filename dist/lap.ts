@@ -29,6 +29,7 @@ export namespace racemate {
             timestamp?: number;
             lap_number?: number;
             penalty_type?: number;
+            car_index?: number;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [18], this.#one_of_decls);
@@ -95,6 +96,9 @@ export namespace racemate {
                 }
                 if ("penalty_type" in data && data.penalty_type != undefined) {
                     this.penalty_type = data.penalty_type;
+                }
+                if ("car_index" in data && data.car_index != undefined) {
+                    this.car_index = data.car_index;
                 }
             }
         }
@@ -224,6 +228,12 @@ export namespace racemate {
         set penalty_type(value: number) {
             pb_1.Message.setField(this, 21, value);
         }
+        get car_index() {
+            return pb_1.Message.getFieldWithDefault(this, 22, 0) as number;
+        }
+        set car_index(value: number) {
+            pb_1.Message.setField(this, 22, value);
+        }
         static fromObject(data: {
             sm_version?: string;
             ac_version?: string;
@@ -246,6 +256,7 @@ export namespace racemate {
             timestamp?: number;
             lap_number?: number;
             penalty_type?: number;
+            car_index?: number;
         }): Lap {
             const message = new Lap({});
             if (data.sm_version != null) {
@@ -311,6 +322,9 @@ export namespace racemate {
             if (data.penalty_type != null) {
                 message.penalty_type = data.penalty_type;
             }
+            if (data.car_index != null) {
+                message.car_index = data.car_index;
+            }
             return message;
         }
         toObject() {
@@ -336,6 +350,7 @@ export namespace racemate {
                 timestamp?: number;
                 lap_number?: number;
                 penalty_type?: number;
+                car_index?: number;
             } = {};
             if (this.sm_version != null) {
                 data.sm_version = this.sm_version;
@@ -400,6 +415,9 @@ export namespace racemate {
             if (this.penalty_type != null) {
                 data.penalty_type = this.penalty_type;
             }
+            if (this.car_index != null) {
+                data.car_index = this.car_index;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -448,6 +466,8 @@ export namespace racemate {
                 writer.writeInt32(20, this.lap_number);
             if (this.penalty_type != 0)
                 writer.writeInt32(21, this.penalty_type);
+            if (this.car_index != 0)
+                writer.writeInt32(22, this.car_index);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -519,6 +539,9 @@ export namespace racemate {
                         break;
                     case 21:
                         message.penalty_type = reader.readInt32();
+                        break;
+                    case 22:
+                        message.car_index = reader.readInt32();
                         break;
                     default: reader.skipField();
                 }
